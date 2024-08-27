@@ -8,8 +8,62 @@ e.grid(row=1, column=0, columnspan=4, padx=5, pady=5)
 
 
 def button_click(number):
+    current = e.get()
+    e.delete(0, END)
+    e.insert(0, str(current) + str(number))
 
-    e.insert(0, number)
+def button_clear():
+    e.delete(0, END)
+
+def button_plus():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "addition"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def button_equal():
+    second_number = e.get()
+    e.delete(0, END)
+
+    if math == "addition":
+        e.insert(0, f_num + int(second_number))
+
+    if math == "subtraction":
+        e.insert(0, f_num - int(second_number))
+
+    if math == "multiplication":
+        e.insert(0, f_num * int(second_number))
+
+    if math == "division":
+        e.insert(0, f_num / int(second_number))
+
+def button_sub():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "subtraction"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def button_x():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "multiplication"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+def button_div():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "division"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+
 
 #define buttons
 Button_1 = Button(root, text="1", padx=40, pady=20, command=lambda: button_click(1))
@@ -22,12 +76,12 @@ Button_7 = Button(root, text="7", padx=40, pady=20, command=lambda: button_click
 Button_8 = Button(root, text="8", padx=40, pady=20, command=lambda: button_click(8))
 Button_9 = Button(root, text="9", padx=40, pady=20, command=lambda: button_click(9))
 Button_0 = Button(root, text="0", padx=40, pady=20, command=lambda: button_click(0))
-button_plus = Button(root, text="+", padx=40, pady=20, command=lambda: button_click())
-button_equal = Button(root, text="=", padx=40, pady=20, command=lambda: button_click())
-button_clear = Button(root, text="C", padx=40, pady=8, command=lambda: button_click())
-button_sub = Button(root, text="-", padx=40, pady=20, command=lambda: button_click())
-button_dev = Button(root, text="/", padx=40, pady=20, command=lambda: button_click())
-button_x = Button(root, text="x", padx=40, pady=20, command=lambda: button_click())
+button_plus = Button(root, text="+", padx=40, pady=20, command=button_plus)
+button_equal = Button(root, text="=", padx=40, pady=20, command=button_equal)
+button_clear = Button(root, text="C", padx=40, pady=8, command=button_clear)
+button_sub = Button(root, text="-", padx=40, pady=20, command=button_sub)
+button_dev = Button(root, text="/", padx=40, pady=20, command=button_div)
+button_x = Button(root, text="x", padx=40, pady=20, command=button_x)
 
 #put buttons on the screen
 Button_1.grid(row=5, column=1)
